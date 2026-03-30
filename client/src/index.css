@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+
+/* TCS */
+/* --- TCS Inspired Mega Menu Transitions --- */
+@keyframes tcsDrop {
+  0% {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+  }
+  100% {
+    clip-path: inset(0 0 0% 0);
+    opacity: 1;
+  }
+}
+
+@keyframes contentReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-drop-down {
+  animation: tcsDrop 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Staggered Column Reveals */
+.animate-column-1 {
+  opacity: 0;
+  animation: contentReveal 0.5s ease-out 0.2s forwards;
+}
+
+.animate-column-2 {
+  opacity: 0;
+  animation: contentReveal 0.5s ease-out 0.3s forwards;
+}
+
+.animate-column-3 {
+  opacity: 0;
+  animation: contentReveal 0.5s ease-out 0.4s forwards;
+}
+
+/* --- New Keyframes for Left-to-Right Animation --- */
+@keyframes fadeSlideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px); /* Starts 20px to the left */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* Glides into its normal position */
+  }
+}
+
+/* The horizontal link reveal */
+.animate-link-reveal {
+  opacity: 0;
+  animation: fadeSlideRight 0.4s ease-out forwards;
+}
+
+/* tcs navbar mobile */
+/* --- Mobile Menu Right-to-Left Animation --- */
+@keyframes slideRightToLeft {
+  0% { 
+    opacity: 0; 
+    transform: translateX(20px); /* Starts to the right */
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateX(0); /* Glides into place (leftwards) */
+  }
+}
+
+.animate-slide-left {
+  opacity: 0;
+  animation: slideRightToLeft 0.4s ease-out forwards;
+}
