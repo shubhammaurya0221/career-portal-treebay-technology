@@ -1,4 +1,3 @@
-// features/jobs/jobSlice.js
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { fetchJobsAPI } from "./jobAPI";
 
@@ -26,7 +25,7 @@ const jobSlice = createSlice({
       })
       .addCase(fetchJobs.fulfilled, (state, action) => {
         state.loading = false;
-        state.jobs = action.payload;
+        state.jobs = action.payload.data;
       })
       .addCase(fetchJobs.rejected, (state, action) => {
         state.loading = false;

@@ -1,4 +1,3 @@
-// models/Job.js
 import mongoose from "mongoose";
 
 const jobSchema = new mongoose.Schema({
@@ -6,7 +5,7 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  description: {
+  company: {
     type: String,
     required: true
   },
@@ -14,14 +13,21 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
+  jobType: {
+    type: String,
+    enum: ['Full-time', 'Part-time', 'Contract', 'Internship'],
+    required: true  
+  },
+  salary: {
+    type: Number,
+  },
+  description: {
+    type: String,
     required: true
   },
-  jobType: {
-    type: ['Full-time', 'Part-time', 'Contract', 'Internship'],
-    required: true  
+  requirements : {
+    type : [String],
+    required: true
   },
 },{timestamps: true});
 

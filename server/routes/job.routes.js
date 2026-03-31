@@ -3,7 +3,7 @@ import { getJobs, createJob } from "../controller/job.controller.js";
 
 const JobRouter = express.Router();
 
-JobRouter.get("/get", getJobs);
-JobRouter.post("/create", createJob);
+JobRouter.get("/", getJobs);
+JobRouter.post("/", createJob);
 
 export default JobRouter;

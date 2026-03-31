@@ -56,20 +56,20 @@ const JobList = ({ jobs, selectedJob, onSelectJob }) => {
       <div className="overflow-y-auto flex-1">
         {jobs.map((job) => (
           <div
-            key={job.id}
+            key={job._id}
             onClick={() => onSelectJob(job)}
             className={`px-3 py-3 border-b border-gray-100 cursor-pointer transition-colors duration-150 ${
-              selectedJob?.id === job.id
+              // FIX: Use _id instead of id
+              selectedJob?._id === job._id
                 ? "bg-teal-50 border-l-4 border-l-teal-500"
                 : "hover:bg-gray-50 border-l-4 border-l-transparent"
-            }`}
+              }`}
           >
             <h4
-              className={`text-sm font-semibold leading-snug ${
-                selectedJob?.id === job.id ? "text-teal-700" : "text-teal-600"
-              }`}
+              className={`text-sm font-semibold leading-snug ${selectedJob?._id === job._id ? "text-teal-700" : "text-teal-600"
+                }`}
             >
-              {job.jobRole}
+              {job.job_title}
             </h4>
             <div className="flex items-center gap-1 mt-1 text-xs text-gray-500">
               <MapPin className="w-3 h-3" />
@@ -81,13 +81,13 @@ const JobList = ({ jobs, selectedJob, onSelectJob }) => {
                   ★ {job.badge}
                 </span>
               )}
-              {job.jobType  && (
+              {job.jobType && (
                 <span className="text-[10px] font-semibold text-blue-700 bg-blue-100 border border-blue-200 rounded px-1.5 py-0.5">
                   {job.jobType}
                 </span>
               )}
             </div>
-            <p className="text-[11px] text-gray-400 mt-1.5">Posted {job.createdAt} days ago</p>
+            <p className="text-[11px] text-gray-400 mt-1.5">Posted {Math.floor((Date.now() - new Date(job.createdAt)) / (1000 * 60 * 60 * 24))} days ago</p>
           </div>
         ))}
       </div>

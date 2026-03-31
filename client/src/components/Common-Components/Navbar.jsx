@@ -355,13 +355,11 @@ const Header = () => {
                         ))}
 
                         <div className="pt-6 pb-10 space-y-6">
-                            <button className="flex items-center text-gray-300 hover:text-white transition-colors w-full text-left font-semibold text-lg">
-                                <Globe size={22} className="mr-3" />
-                                Global (En)
+                            <Link className="flex items-center justify-center mt-10 space-x-6 h-full" to="/jobs">
+                            <button className="text-gray-300 hover:text-white transition-colors px-5 py-2 bg-blue-600 rounded-md" >
+                                View All Jobs
                             </button>
-                            <a href="/contact" className="block text-gray-300 hover:text-white transition-colors w-full text-left font-semibold text-lg">
-                                Contact Us
-                            </a>
+                        </Link>
                         </div>
                     </div>
                 </div>

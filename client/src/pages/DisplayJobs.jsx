@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Navbar from "../components/Common-Components/Navbar";
@@ -7,7 +7,7 @@ import SearchBar from "../components/DisplayJobs-Components/SearchBar";
 import JobList from "../components/DisplayJobs-Components/JobList";
 import JobDetail from "../components/DisplayJobs-Components/JobDetails";
 
-import { fetchJobs } from "../features/jobs/jobSlice";
+import { fetchJobs } from "../redux/features/jobs/jobSlice";
 
 const DisplayJobs = () => {
   const dispatch = useDispatch();
@@ -23,16 +23,16 @@ const DisplayJobs = () => {
     dispatch(fetchJobs());
   }, [dispatch]);
 
-  // Set default selected job after data loads
   useEffect(() => {
-    if (jobs.length > 0 && !selectedJob) {
-      setSelectedJob(jobs[0]);
-    }
-  }, [jobs, selectedJob]);
+  // Only set the default if we have jobs AND no job is currently selected
+  if (jobs.length > 0 && !selectedJob?._id) {
+    setSelectedJob(jobs[0]);
+  }
+}, [jobs, selectedJob?._id]); 
 
-  const handleSelectJob = (job) => {
-    setSelectedJob(job);
-  };
+  const handleSelectJob = useCallback((job) => {
+  setSelectedJob(job);
+}, []);
 
   if (loading) return <p className="p-6">Loading...</p>;
   if (error) return <p className="p-6 text-red-500">Error: {error}</p>;
@@ -65,7 +65,8 @@ const DisplayJobs = () => {
               style={{ height: "calc(100vh - 200px)" }}
             >
               {selectedJob ? (
-                <JobDetail job={selectedJob} />
+                <JobDetail 
+                job={selectedJob} />
               ) : (
                 <div className="p-6 text-gray-500">
                   Select a job to view details

@@ -15,7 +15,17 @@ app.use(express.urlencoded({extended: true}));
 
 app.use("/api/jobs", JobRouter);  
 
-app.listen(process.env.PORT, ()=>{
-    console.log(`Server is running on port ${process.env.PORT}`);
-    connectDB();
-})
+
+const startServer = async()=>{
+    try {
+        await connectDB();
+
+        app.listen(process.env.PORT,()=>{
+            console.log(`server is running on ${process.env.PORT}`);
+        })
+    } catch (error) {
+        console.error(`DATABASE connection failed : ${error}`)
+    }
+}
+
+startServer();
