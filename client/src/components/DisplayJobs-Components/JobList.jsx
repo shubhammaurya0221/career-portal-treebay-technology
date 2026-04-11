@@ -1,35 +1,6 @@
 // components/JobList.jsx
 import { MapPin, Bell, Map } from "lucide-react";
 
-// const jobs = [
-//   {
-//     id: 1,
-//     title: "Piping Department Manager",
-//     location: "Baton Rouge, LA, US + 1 more",
-//     badge: "Company Priority",
-//     postedDays: 6,
-//     active: true,
-//   },
-//   {
-//     id: 2,
-//     title: "Project Accountant II",
-//     location: "Navi Mumbai, MH, IN",
-//     badge: "Company Priority",
-//     hybrid: true,
-//     postedDays: 7,
-//     active: false,
-//   },
-//   {
-//     id: 3,
-//     title: "Senior Principal Electrical, Instrumentation & Control Engineer",
-//     location: "Charleston, WV, US",
-//     badge: "Company Priority",
-//     hybrid: true,
-//     postedDays: 12,
-//     active: false,
-//   },
-// ];
-
 const JobList = ({ jobs, selectedJob, onSelectJob }) => {
   return (
     <div className="w-full h-full flex flex-col">

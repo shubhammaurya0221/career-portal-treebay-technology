@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
 import JobRouter from './routes/job.routes.js';
+import ApplicationRouter from './routes/application.routes.js';
 dotenv.config();
 const app = express();
 
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use("/api/jobs", JobRouter);  
-
+app.use("/api/applications", ApplicationRouter);
 
 const startServer = async()=>{
     try {

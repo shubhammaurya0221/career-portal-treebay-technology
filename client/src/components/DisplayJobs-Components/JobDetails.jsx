@@ -48,7 +48,10 @@ const JobDetail = ({ job }) => {
 
       {/* Action Buttons */}
       <div className="flex gap-3 mt-4">
-        <button className="bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm px-5 py-2.5 rounded-md transition-colors">
+        <button
+          onClick={() => navigate(`/apply/${job._id}`)}
+          className="bg-teal-600 text-white px-5 py-2 rounded"
+        >
           Apply Now
         </button>
         <button className="border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold text-sm px-5 py-2.5 rounded-md transition-colors">
