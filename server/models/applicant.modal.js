@@ -97,7 +97,6 @@ const applicantSchema = new Schema(
             email: {
                 type: String,
                 required: true,
-                unique: true
             },
             mobile: {
                 type: String,
@@ -180,5 +179,8 @@ const applicantSchema = new Schema(
     },
     { timestamps: true }
 );
+
+// Compound unique index — same email can apply to different jobs, but not the same job twice
+applicantSchema.index({ "personalDetails.email": 1, jobId: 1 }, { unique: true });
 
 export default mongoose.model("Applicant", applicantSchema);

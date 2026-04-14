@@ -73,7 +73,6 @@ const DisplayJobs = () => {
                 </div>
               )}
             </div>
-
           </div>
         </div>
       </main>

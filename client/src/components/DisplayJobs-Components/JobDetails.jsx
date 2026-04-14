@@ -1,6 +1,9 @@
 import { MapPin, Heart, Share2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const JobDetail = ({ job }) => {
+  // FIX bug #2: useNavigate was missing — Apply Now crashed on every click
+  const navigate = useNavigate();
   
   // 1. Safety check: If no job is selected, show a placeholder
   // console.log("Currently selected job data:", job);

@@ -6,7 +6,7 @@ const JobList = ({ jobs, selectedJob, onSelectJob }) => {
     <div className="w-full h-full flex flex-col">
       {/* List Header */}
       <div className="flex items-center justify-between px-3 py-2 border-b border-gray-200">
-        <span className="text-sm font-semibold text-gray-700">771 jobs</span>
+        <span className="text-sm font-semibold text-gray-700">{jobs.length} jobs</span>
         <div className="flex items-center gap-3 text-xs text-gray-500">
           <span className="flex items-center gap-1 cursor-pointer hover:text-teal-600">
             <span>↕</span> Sort: Company priority
